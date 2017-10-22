@@ -8,15 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/SergeMazille/modal-basis.git"
+    "url": "git+https://github.com/sergemazille/modal-basis.git"
   },
   "keywords": [
     "modal"
   ],
   "author": "Serge Mazille",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/SergeMazille/modal-basis#readme",
+  "bugs": {
+    "url": "https://github.com/sergemazille/modal-basis/issues"
+  },
+  "homepage": "https://github.com/sergemazille/modal-basis#readme",
   "dependencies": {
     "overlay-basis": "0.0.4"
-  }
+  },
+  "devDependencies": {}
 }
