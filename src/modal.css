@@ -1,11 +1,17 @@
+.modal,
+.modal::before,
+.modal::after {
+    box-sizing: border-box;
+}
+
 .modal {
     display: none;
     visibility: hidden;
 
-    padding: 1.5rem;
-    width: calc(100vw - (1.5rem * 2));
+    padding: var(--modal-padding, 1.5rem);
+    width: 100vw;
     max-width: 100%; /* scrollbar isn't included */
-    height: calc(100vh - (1.5rem * 2));
+    height: 100vh;
 
     position: fixed;
     z-index: calc(var(--overlay-z-index, 10) + 1);
@@ -103,12 +109,12 @@
 
 .modal.--type-drawer.--transition-right.is-visible,
 .modal.--type-drawer.--position-right.is-visible {
-    left: calc(50vw + var(--offset, 0) - var(--modal-padding, 1.5rem));
+    left: calc(50vw + var(--offset, 0));
 }
 
 .modal.--type-drawer.--transition-left.is-visible,
 .modal.--type-drawer.--position-left.is-visible {
-    left: calc(50vw - var(--offset, 0) + var(--modal-padding, 1.5rem));
+    left: calc(50vw - var(--offset, 0));
 }
 
 .modal.--type-drawer.--transition-bottom,
@@ -120,12 +126,12 @@
 
 .modal.--type-drawer.--transition-bottom.is-visible,
 .modal.--type-drawer.--position-bottom.is-visible {
-    top: calc(50vh + var(--offset, 0) - var(--modal-padding, 1.5rem));
+    top: calc(50vh + var(--offset, 0));
 }
 
 .modal.--type-drawer.--transition-top.is-visible,
 .modal.--type-drawer.--position-top.is-visible {
-    top: calc(50vh - var(--offset, 0) + var(--modal-padding, 1.5rem));
+    top: calc(50vh - var(--offset, 0));
 }
 
 
