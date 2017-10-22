@@ -1,0 +1,22 @@
+{
+  "name": "modal-basis",
+  "version": "0.0.1",
+  "description": "Simple modal component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/SergeMazille/modal-basis.git"
+  },
+  "keywords": [
+    "modal"
+  ],
+  "author": "Serge Mazille",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/SergeMazille/modal-basis#readme",
+  "dependencies": {
+    "overlay-basis": "0.0.4"
+  }
+}

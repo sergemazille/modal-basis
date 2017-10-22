@@ -1,0 +1,140 @@
+.modal {
+    display: none;
+    visibility: hidden;
+
+    padding: 1.5rem;
+    width: calc(100vw - (1.5rem * 2));
+    max-width: 100%; /* scrollbar isn't included */
+    height: calc(100vh - (1.5rem * 2));
+
+    position: fixed;
+    z-index: calc(var(--overlay-z-index, 10) + 1);
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+
+    overflow: auto;
+
+    /* default style */
+    background: var(--modal-background-color, #fff);
+}
+
+.modal.is-visible {
+    display: block;
+    visibility: visible;
+}
+
+
+/* modifiers */
+/* ========= */
+
+/* sliding animations */
+/* ================== */
+
+.modal.--transition-top,
+.modal.--transition-right,
+.modal.--transition-bottom,
+.modal.--transition-left {
+    display: block;
+}
+
+.modal.--transition-top,
+.modal.--transition-bottom {
+    transition: top var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out), visibility 0s var(--modal-transition-duration, .3s), opacity 0s var(--modal-transition-duration, .3s); /* visibility and opacity toggle are delayed after 'modal' element has been hidden */
+    opacity: 0; /* avoid scale artifact on page reload */
+}
+
+.modal.--transition-top.is-visible,
+.modal.--transition-bottom.is-visible {
+    top: 50vh;
+    opacity: 1;
+    transition: top var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out);
+}
+
+.modal.--transition-right,
+.modal.--transition-left {
+    transition: left var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out), visibility 0s var(--modal-transition-duration, .3s), opacity 0s var(--modal-transition-duration, .3s); /* visibility and opacity toggle are delayed after 'modal' element has been hidden */
+    opacity: 0; /* avoid scale artifact on page reload */
+}
+
+.modal.--transition-right.is-visible,
+.modal.--transition-left.is-visible {
+    left: 50vw;
+    opacity: 1;
+    transition: left var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out);
+}
+
+/* starting positions */
+.modal.--transition-top { top: calc(-100vh - 50%); }
+.modal.--transition-right { left: calc(100vw + 50%); }
+.modal.--transition-bottom { top: calc(100vh + 50%); }
+.modal.--transition-left { left: calc(-100vw - 50%); }
+
+
+/* scale animation */
+/* =============== */
+
+.modal.--transition-scale {
+    display: block;
+    transform: perspective(1px) translate(-50%,-50%) scale(0);
+    opacity: 0; /* avoid scale artifact on page reload */
+    transition: transform var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out), visibility 0s var(--modal-transition-duration, .3s), opacity 0s var(--modal-transition-duration, .3s); /* visibility and opacity toggle are delayed after 'modal' element has been hidden */
+}
+
+.modal.--transition-scale.is-visible {
+    transform: perspective(1px) translate(-50%,-50%) scale(1);
+    opacity: 1;
+    transition: transform var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out);
+}
+
+
+/* drawer type */
+/* =========== */
+.modal.--type-drawer {
+    --offset: calc((100% - var(--modal-drawer-dimension, 70%)) / 2 );
+}
+
+.modal.--type-drawer.--transition-right,
+.modal.--type-drawer.--position-right,
+.modal.--type-drawer.--transition-left,
+.modal.--type-drawer.--position-left {
+    width: var(--modal-drawer-dimension, 70%);
+}
+
+.modal.--type-drawer.--transition-right.is-visible,
+.modal.--type-drawer.--position-right.is-visible {
+    left: calc(50vw + var(--offset, 0) - var(--modal-padding, 1.5rem));
+}
+
+.modal.--type-drawer.--transition-left.is-visible,
+.modal.--type-drawer.--position-left.is-visible {
+    left: calc(50vw - var(--offset, 0) + var(--modal-padding, 1.5rem));
+}
+
+.modal.--type-drawer.--transition-bottom,
+.modal.--type-drawer.--position-bottom,
+.modal.--type-drawer.--transition-top,
+.modal.--type-drawer.--position-top {
+    height: var(--modal-drawer-dimension, 70%);
+}
+
+.modal.--type-drawer.--transition-bottom.is-visible,
+.modal.--type-drawer.--position-bottom.is-visible {
+    top: calc(50vh + var(--offset, 0) - var(--modal-padding, 1.5rem));
+}
+
+.modal.--type-drawer.--transition-top.is-visible,
+.modal.--type-drawer.--position-top.is-visible {
+    top: calc(50vh - var(--offset, 0) + var(--modal-padding, 1.5rem));
+}
+
+
+/* dialog type */
+/* =========== */
+
+.modal.--type-dialog {
+    display: block;
+    width: 50vw;
+    height: auto;
+    max-height: 50vh;
+}
