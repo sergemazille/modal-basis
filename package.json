@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/sergemazille/modal-basis#readme",
   "dependencies": {
-    "overlay-basis": "0.1.*"
+    "overlay-basis": "0.2.*"
   },
   "devDependencies": {}
 }
