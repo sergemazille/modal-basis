@@ -1,0 +1,138 @@
+.modal {
+    display: none;
+    visibility: hidden;
+
+    padding: var(--modal-padding, 24px);
+    width: calc(100vw - (#{var(--modal-padding, 24px)} * 2));
+    max-width: 100%; // scrollbar isn't included
+    height: calc(100vh - (#{var(--modal-padding, 24px)} * 2));
+
+    position: fixed;
+    z-index: calc(var(--overlay-z-index, 10) + 1);
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+
+    overflow: auto;
+
+    // default style
+    background: var(--above-background-color, #fff);
+
+    &.is-visible {
+        display: block;
+        visibility: visible;
+    }
+}
+
+
+// modifiers
+// =========
+
+.modal {
+
+    // sliding animations
+    // ==================
+
+    &.--transition-top, &.--transition-right, &.--transition-bottom, &.--transition-left {
+        display: block;
+    }
+
+    &.--transition-top, &.--transition-bottom {
+        transition: top var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out), visibility 0s var(--modal-transition-duration, .3s), opacity 0s var(--modal-transition-duration, .3s); // visibility and opacity toggle are delayed after 'above' element has been hidden
+        opacity: 0; // avoid scale artifact on page reload
+
+        &.is-visible {
+            top: 50vh;
+            opacity: 1;
+            transition: top var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out);
+        }
+    }
+
+    &.--transition-right, &.--transition-left {
+        transition: left var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out), visibility 0s var(--modal-transition-duration, .3s), opacity 0s var(--modal-transition-duration, .3s); // visibility and opacity toggle are delayed after 'above' element has been hidden
+        opacity: 0; // avoid scale artifact on page reload
+
+        &.is-visible {
+            left: 50vw;
+            opacity: 1;
+            transition: left var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out);
+        }
+    }
+
+    // starting positions
+    &.--transition-top { top: calc(-100vh - 50%); }
+    &.--transition-right { left: calc(100vw + 50%); }
+    &.--transition-bottom { top: calc(100vh + 50%); }
+    &.--transition-left { left: calc(-100vw - 50%); }
+
+
+    // scale animation
+    // ===============
+
+    &.--transition-scale {
+        display: block;
+
+        transform: perspective(1px) translate(-50%,-50%) scale(0);
+        opacity: 0; // avoid scale artifact on page reload
+        transition: transform var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out), visibility 0s var(--modal-transition-duration, .3s), opacity 0s var(--modal-transition-duration, .3s); // visibility and opacity toggle are delayed after 'above' element has been hidden
+
+        &.is-visible {
+            transform: perspective(1px) translate(-50%,-50%) scale(1);
+            opacity: 1;
+            transition: transform var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out);
+        }
+    }
+
+
+    // drawer type
+    // ===========
+
+    &.--type-drawer {
+
+        --offset: calc((100% - var(--modal-drawer-dimension, 70%)) / 2 );
+
+        &.--transition-right, &.--position-right {
+            width: var(--modal-drawer-dimension, 70%);
+
+            &.is-visible {
+                left: calc(50vw + --offset - var(--modal-padding, 1.5rem));
+            }
+        }
+
+        &.--transition-left, &.--position-left {
+            width: var(--modal-drawer-dimension, 70%);
+
+            &.is-visible {
+                left: calc(50vw - --offset + var(--modal-padding, 1.5rem));
+            }
+        }
+
+        &.--transition-bottom, &.--position-bottom {
+            height: var(--modal-drawer-dimension, 70%);
+
+            &.is-visible {
+                top: calc(50vh + --offset - var(--modal-padding, 1.5rem));
+            }
+        }
+
+        &.--transition-top, &.--position-top {
+            height: var(--modal-drawer-dimension, 70%);
+
+            &.is-visible {
+                top: calc(50vh - --offset + var(--modal-padding, 1.5rem));
+            }
+        }
+    }
+
+
+    // dialog type
+    // ===========
+
+    &.--type-dialog {
+        display: block;
+
+        width: 50vw;
+        height: auto;
+        max-height: 50vh;
+    }
+}

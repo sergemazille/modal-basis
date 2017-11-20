@@ -1,4 +1,4 @@
-import Overlay from 'overlay-basis/src/overlay';
+import Overlay from '../../mardizza/node_modules/overlay-basis/src/overlay';
 
 export default class {
     static init() {
@@ -84,20 +84,19 @@ function registerEvents(Modal) {
             let modal = clickedElement.closest('.modal');
             Modal.hide(modal);
         }
+    });
 
-        // page's overlay was clicked
-        if (clickedElement.id === 'overlay') {
-            let overlay = clickedElement; // for ease of use
 
-            // do nothing if overlay isn't visible or is locked
-            if (! (overlay.classList.contains('is-visible')) || (overlay.classList.contains('is-locked'))) {
-                return;
-            }
+    // closing modals along with overlay
+    // =================================
 
-            let modals = document.querySelectorAll('.modal');
-            [...modals].forEach(function(modal) {
-                Modal.hide(modal);
-            });
-        }
+    let overlay = document.querySelector('#overlay');
+    overlay.addEventListener('hiding', () => {
+
+        // hide every modals
+        let modals = document.querySelectorAll('.modal');
+        [...modals].forEach(function(modal) {
+            Modal.hide(modal);
+        });
     });
 }
