@@ -1,4 +1,4 @@
-import Overlay from '../../mardizza/node_modules/overlay-basis/src/overlay';
+import Overlay from 'overlay-basis/src/overlay';
 
 export default class {
     static init() {
