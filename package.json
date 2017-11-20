@@ -1,6 +1,6 @@
 {
   "name": "modal-basis",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Simple modal component",
   "main": "index.js",
   "scripts": {
