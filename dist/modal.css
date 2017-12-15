@@ -8,7 +8,7 @@
     position: fixed;
     z-index: calc(var(--overlay-z-index, 10) + 1);
     top: 50vh;
-    left: 50%;
+    left: 50vw;
     transform: translate(-50%, -50%);
     overflow: auto;
     background: var(--above-background-color, #fff);
@@ -35,7 +35,7 @@
     opacity: 0;
 }
 .modal.--transition-right.is-visible, .modal.--transition-left.is-visible {
-    left: 50%;
+    left: 50vw;
     opacity: 1;
     transition: left var(--modal-transition-duration, 0.3s) var(--modal-transition-timing-function, ease-in-out);
 }
@@ -69,13 +69,13 @@
     width: var(--modal-drawer-dimension, 70%);
 }
 .modal.--type-drawer.--transition-right.is-visible, .modal.--type-drawer.--position-right.is-visible {
-    left: calc(50% + --offset - var(--modal-padding, 1.5rem));
+    left: calc(50vw + --offset - var(--modal-padding, 1.5rem));
 }
 .modal.--type-drawer.--transition-left, .modal.--type-drawer.--position-left {
     width: var(--modal-drawer-dimension, 70%);
 }
 .modal.--type-drawer.--transition-left.is-visible, .modal.--type-drawer.--position-left.is-visible {
-    left: calc(50% - --offset + var(--modal-padding, 1.5rem));
+    left: calc(50vw - --offset + var(--modal-padding, 1.5rem));
 }
 .modal.--type-drawer.--transition-bottom, .modal.--type-drawer.--position-bottom {
     height: var(--modal-drawer-dimension, 70%);
@@ -91,7 +91,7 @@
 }
 .modal.--type-dialog {
     display: block;
-    width: 50%;
+    width: 50vw;
     height: auto;
     max-height: 50vh;
 }

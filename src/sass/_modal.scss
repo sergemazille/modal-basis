@@ -10,7 +10,7 @@
     position: fixed;
     z-index: calc(var(--overlay-z-index, 10) + 1);
     top: 50vh;
-    left: 50%;
+    left: 50vw;
     transform: translate(-50%, -50%);
 
     overflow: auto;
@@ -53,7 +53,7 @@
         opacity: 0; // avoid scale artifact on page reload
 
         &.is-visible {
-            left: 50%;
+            left: 50vw;
             opacity: 1;
             transition: left var(--modal-transition-duration, .3s) var(--modal-transition-timing-function, ease-in-out);
         }
@@ -95,7 +95,7 @@
             width: var(--modal-drawer-dimension, 70%);
 
             &.is-visible {
-                left: calc(50% + --offset - var(--modal-padding, 1.5rem));
+                left: calc(50vw + --offset - var(--modal-padding, 1.5rem));
             }
         }
 
@@ -103,7 +103,7 @@
             width: var(--modal-drawer-dimension, 70%);
 
             &.is-visible {
-                left: calc(50% - --offset + var(--modal-padding, 1.5rem));
+                left: calc(50vw - --offset + var(--modal-padding, 1.5rem));
             }
         }
 
@@ -131,7 +131,7 @@
     &.--type-dialog {
         display: block;
 
-        width: 50%;
+        width: 50vw;
         height: auto;
         max-height: 50vh;
     }
