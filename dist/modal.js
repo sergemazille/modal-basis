@@ -45,6 +45,11 @@ function registerEvents(ModalClass) {
         // opening the 'modal' element
         // ===========================
 
+        // allow nested clicked element
+        if (clickedElement.closest('[data-toggle="modal"]')) {
+            clickedElement = clickedElement.closest('[data-toggle="modal"]')
+        }
+
         // clicked element has to target explicitly a 'modal' element
         if (clickedElement.dataset.toggle === 'modal') {
 
