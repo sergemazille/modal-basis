@@ -36,7 +36,7 @@ export default class {
     }
 }
 
-function registerEvents(Modal) {
+function registerEvents(ModalClass) {
 
     // listen to a click event on a trigger element
     document.querySelector('body').addEventListener('click', function(e) {
@@ -72,7 +72,7 @@ function registerEvents(Modal) {
             }
 
             if (modal) {
-                Modal.show(modal);
+                ModalClass.show(modal);
             }
         }
 
@@ -82,7 +82,7 @@ function registerEvents(Modal) {
         // dismiss button has to be nested inside the 'modal' element
         if (clickedElement.classList.contains('dismiss') && clickedElement.closest('.modal')) {
             let modal = clickedElement.closest('.modal');
-            Modal.hide(modal);
+            ModalClass.hide(modal);
         }
     });
 
@@ -90,13 +90,13 @@ function registerEvents(Modal) {
     // closing modals along with overlay
     // =================================
 
-    let overlay = document.querySelector('#overlay');
+    let overlay = ModalClass.overlay.domElement;
     overlay.addEventListener('hiding', () => {
 
         // hide every modals
         let modals = document.querySelectorAll('.modal');
         [...modals].forEach(function(modal) {
-            Modal.hide(modal);
+            ModalClass.hide(modal);
         });
     });
 }
